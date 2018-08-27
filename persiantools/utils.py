@@ -3,8 +3,6 @@ import random
 import re
 import string
 
-from persiantools import digits
-
 
 def replace(string, dictionary):
     if not isinstance(string, str):
@@ -101,10 +99,9 @@ def clean_mobile_number(number, add_98=False, add_plus=False):
 
     :param number: A string, will be cleaned
     :param add_98: Add country code prefix to the final number
-    :param add_98: Add + prefix to the final number
+    :param add_plus: Add + prefix to the final number
     :return: str
     """
-    number = digits.to_en(number)
     number = re.sub('^\+?98', '0', number)
     number = re.sub('^9', '09', number)
 
@@ -117,7 +114,7 @@ def clean_mobile_number(number, add_98=False, add_plus=False):
 
 
 def is_valid_mobile_number(number):
-    """Check whether the number is valid Iran's operators number or not
+    """Check whether the number is valid mobile number or not
 
         Usage::
         >>> from persiantools import utils

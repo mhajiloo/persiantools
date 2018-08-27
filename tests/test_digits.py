@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nose import tools
+
 from unittest import TestCase
 
 from persiantools import digits
@@ -39,6 +39,6 @@ class TestDigits(TestCase):
     def test_to_en_with_non_digits(self):
         self.assertEqual(digits.to_en("aذ0987٦٥٤۳۲۱"), "aذ0987654321")
 
-    @tools.raises(ValueError)
     def test_int_arg(self):
-        digits.en_to_fa(12345)
+        with self.assertRaises(ValueError):
+            digits.en_to_fa(12345)
